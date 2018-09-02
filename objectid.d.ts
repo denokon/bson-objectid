@@ -24,6 +24,6 @@ declare class ObjectID {
     readonly bin: Uint8Array;
 
     toHexString(): string;
-    equals(other: ObjectID): boolean;
+    equals(other: any): other is ObjectID;
     getTimestamp(): number;
 }

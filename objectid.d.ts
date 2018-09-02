@@ -1,7 +1,6 @@
 // Type definitions for bson-objectid 1.1.5
 // Project: bson-objectid
 // Definitions by: Marcel Ernst <https://www.marcel-ernst.de>
-import { Buffer } from 'buffer';
 export default ObjectID;
 
 declare class ObjectID {
@@ -18,10 +17,11 @@ declare class ObjectID {
     constructor(hexString: string);
     constructor(idString: string);
     constructor(array: number[]);
-    constructor(buffer: Buffer);
+    constructor(buffer: Uint8Array);
 
     readonly id: string;
     readonly str: string;
+    readonly bin: Uint8Array;
 
     toHexString(): string;
     equals(other: ObjectID): boolean;

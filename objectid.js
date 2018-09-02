@@ -11,12 +11,7 @@ var pid = (typeof process === 'undefined' || typeof process.pid !== 'number' ? M
  *
  */
 var isBuffer = function (obj) {
-  return !!(
-  obj != null &&
-  obj.constructor &&
-  typeof obj.constructor.isBuffer === 'function' &&
-  obj.constructor.isBuffer(obj)
-  )
+  return obj instanceof Uint8Array;
 };
 
 /**
@@ -52,6 +47,9 @@ function ObjectID(arg) {
   });
   Object.defineProperty(this, "str", {
     get: function() { return buf.map(hex.bind(this, 2)).join(''); }
+  });
+  Object.defineProperty(this, "bin", {
+    get: function() { return new Uint8Array(buf); }
   });
 }
 module.exports = ObjectID;
